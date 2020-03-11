@@ -12,15 +12,15 @@
             <ul class="nav nav-tabs nav-tabs-highlight-dark nav-justified col-md-8" id="tbs">
                 <li class="nav-item"><a href="#todo1" class="nav-link active" data-toggle="tab">
                         <i class="icon-user mr-1"></i>My Todos
-                        <span class="badge bg-dark badge-pill ml-2" id="bg-1"></span></a>
+                        <span class="badge bg-dark badge-pill ml-2" id="tbg-1"></span></a>
                 </li>
                 <li class="nav-item"><a href="#todo2" class="nav-link" data-toggle="tab">
                         <i class="mi-block mr-1"></i>No Response
-                        <span class="badge bg-danger badge-pill ml-2" id="bg-3"></span></a>
+                        <span class="badge bg-danger badge-pill ml-2" id="tbg-2"></span></a>
                 </li>
                 <li class="nav-item"><a href="#todo3" class="nav-link" data-toggle="tab">
                         <i class="icon-clipboard2 mr-1"></i>Completed
-                        <span class="badge bg-success badge-pill ml-2" id="bg-2"></span></a>
+                        <span class="badge bg-success badge-pill ml-2" id="tbg-3"></span></a>
                 </li>
             </ul>
             <!--/Header Tabs -->

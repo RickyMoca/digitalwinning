@@ -118,20 +118,22 @@ class M_todo extends CI_Model
     public function replyTodos($id, $reply)
     {
 
+        $page = $this->input->get('page');
         $result = $this->db->get_where('todos_reply', array('id_todos' => $id))->num_rows();
         if ($result == '0') {
             // Jalankan fungsi insert
             $this->db->insert('todos_reply', array('id_todos' => $id, 'reply_todos' => $reply, 'date_reply' => tgl_now()));
             $mesaage = 'Reply message succesful';
             info_message($mesaage);
-            redirect('todo/detail?id=' . $id);
+            redirect('todo/detail?id=' . $id . '&page=' . $page);
+
         }
         // Jalankan Fungsi Update
         $this->db->where('id_todos', $id);
         $this->db->update('todos_reply', array('id_todos' => $id, 'reply_todos' => $reply, 'date_reply' => tgl_now()));
         $mesaage = 'Reply message succesfuly updated';
         info_message($mesaage);
-        redirect('todo/detail?id=' . $id);
+        redirect('todo/detail?id=' . $id . '&page=' . $page);
     }
 
     public function changestatus($id_todos)

@@ -11,21 +11,21 @@
 
             <!-- Header Tabs -->
             <ul class="nav nav-tabs nav-tabs-highlight-dark nav-justified col-md-8" id="tbs">
-                <li class="nav-item"><a href="#tab4" class="nav-link" data-toggle="tab">
+                <li class="nav-item"><a href="#tab1_issign" class="nav-link" data-toggle="tab">
                         <i class="icon-paperplane mr-1"></i>All I Assign
-                        <span class="badge bg-primary badge-pill ml-2" id="bg-4"></span></a>
+                        <span class="badge bg-primary badge-pill ml-2" id="issigned-bg-1"></span></a>
                 </li>
-                <li class="nav-item"><a href="#tab1" class="nav-link active" data-toggle="tab">
+                <li class="nav-item"><a href="#tab2_issign" class="nav-link active" data-toggle="tab">
                         <i class="icon-user mr-1"></i>Todos On
-                        <span class="badge bg-dark badge-pill ml-2" id="bg-1"></span></a>
+                        <span class="badge bg-dark badge-pill ml-2" id="issigned-bg-2"></span></a>
                 </li>
-                <li class="nav-item"><a href="#tab3" class="nav-link" data-toggle="tab">
+                <li class="nav-item"><a href="#tab3_issign" class="nav-link" data-toggle="tab">
                         <i class="mi-block mr-1"></i>No Response
-                        <span class="badge bg-danger badge-pill ml-2" id="bg-3"></span></a>
+                        <span class="badge bg-danger badge-pill ml-2" id="issigned-bg-3"></span></a>
                 </li>
-                <li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="tab">
+                <li class="nav-item"><a href="#tab4_issign" class="nav-link" data-toggle="tab">
                         <i class="icon-clipboard2 mr-1"></i>Completed
-                        <span class="badge bg-success badge-pill ml-2" id="bg-2"></span></a>
+                        <span class="badge bg-success badge-pill ml-2" id="issigned-bg-4"></span></a>
                 </li>
             </ul>
             <!--/Header Tabs -->
@@ -33,12 +33,11 @@
 
             <!-- tabs content -->
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="tab1">No data</div>
+                <div class="tab-pane fade show active" id="tab1_issign">No data</div>
+                <div class="tab-pane fade" id="tab2_issign">No data</div>
+                <div class="tab-pane fade" id="tab3_issign">No data</div>
+                <div class="tab-pane fade" id="tab4_issign">No data</div>
 
-                <div class="tab-pane fade" id="tab2">No data</div>
-                <div class="tab-pane fade" id="tab4">No data</div>
-
-                <div class="tab-pane fade" id="tab3">No data</div>
             </div>
             <!-- /tabs content -->
 
@@ -72,12 +71,11 @@
                     </div>
                     <div class="form-row mb-4">
                         <div class="col-6">
-                            <small class="mb-1 badge badge-light">Select yout todo assign to ?</small>
+                            <small class="mb-1 badge badge-light"><i class="icon-user"></i> Select yout todo assign to ?</small>
 
                             <select id="id_user" name="user_recived" class="form-control">
-                                <option selected="true"></option>
                                 <?php foreach ($Vuser as $u) : ?>
-                                    <option value="<?= $u['id']; ?>"><?= $u['name']; ?></option>
+                                    <option value="<?= $u['id']; ?>"><?= $u['name']; ?><i class="icon-user"></i></option>
                                 <?php endforeach; ?>
                             </select>
                             <!-- form validation -->

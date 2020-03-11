@@ -12,7 +12,7 @@
  * ---------------------------------------------------------------------------- */
 
 
-var base_url = 'http://localhost/dwg/todo/';
+var base_url = 'http://localhost/digitalwinning/todo/';
 
 var divStart = ` <div class="card border-left-2 border-left-dark border-right-0 border-top-0 py-1 mb-1 rounded-0 col-md-auto"><div class="form-check form-check-inline form-check">`
 var divEnd = `</div></div>`
@@ -68,7 +68,7 @@ function myTodo() {
 
             $('#todo1').html(baris);
             $('.td1').uniform();
-            $('#bg-1').html(data.length);
+            $('#tbg-1').html(data.length);
             td1();
         }
     })
@@ -82,17 +82,17 @@ function myTodo() {
             for (i = 0; i < data.length; i++) {
                 nores +=
                     divStart + `
-                <label class="form-check-label"><input type="checkbox" class="change td3" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
+                <label class="form-check-label"><input type="checkbox" class="change td2" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
                 <a href="detail?id=`+ data[i].id_todos + `&page=todolist"><span class="text-danger">` + data[i].subject_todos + ` ` + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i><i class="mi-sentiment-dissatisfied mr-1"></i><strong>Please Click Me</strong></span></a>
                 `+ divEnd
             }
             // nores += '<strong><a href="#" class="text-danger"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
 
             $('#todo2').html(nores);
-            $('.td3').uniform({
+            $('.td2').uniform({
                 wrapperClass: 'border-danger-600 text-danger-800'
             });
-            $('#bg-3').html(data.length);
+            $('#tbg-2').html(data.length);
             td2();
 
         }
@@ -109,16 +109,16 @@ function myTodo() {
             for (i = 0; i < data.length; i++) {
                 html +=
                     divStart + `
-                <label class="form-check-label"><input type="checkbox" class="change td2" checked data-oke="`+ data[i].id_todos + `"  data-fouc></label>
+                <label class="form-check-label"><input type="checkbox" class="change td3" checked data-oke="`+ data[i].id_todos + `"  data-fouc></label>
                 <a href="detail?id=`+ data[i].id_todos + `&page=todolist"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="mi-check-box ml-1"></i> <strong>Completed At </strong>` + funSub(data[i].date_completed) + `</span></a>
                 `+ divEnd
             }
             // html += '<strong><a href="#" class="text-success"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
             $('#todo3').html(html);
-            $('.td2').uniform({
+            $('.td3').uniform({
                 wrapperClass: 'border-success-600 text-success-800'
             });
-            $('#bg-2').html(data.length);
+            $('#tbg-3').html(data.length);
             td3();
         }
     })
@@ -128,132 +128,11 @@ function myTodo() {
 /* ------------------------------------------------------------------------------
  *  End Get todolist My Todos
  * ---------------------------------------------------------------------------- */
-
-
-/* ------------------------------------------------------------------------------
- *  # Get todolist My Issign
- * ---------------------------------------------------------------------------- */
-
-function myIssigned() {
-    $.ajax({
-        url: base_url + 'getIssigned',
-        type: 'get',
-        dataType: 'json',
-        success: function (data) {
-            var baris = '';
-            for (i = 0; i < data.length; i++) {
-                baris +=
-                    divStart +
-                    `<label class="form-check-label"><input type="checkbox" class="change td1" data-oke="` + data[i].id_todos + `"  data-fouc></label>
-                    <a href="detail?id=`+ data[i].id_todos + `&page=issign" class="text-dark"><span>` + data[i].subject_todos + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i>
-                      <strong class="text-danger">` + '<i class="mi-restore ml-1"></i> ' + timee(data[i].expired_todos) + `!</strong>
-                    </span></a> `
-                    + divEnd
-            }
-            // baris += '<strong><a href="" class="text-dark"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
-
-            $('#tab1').html(baris);
-            $('.td1').uniform();
-            $('#bg-1').html(data.length);
-            td1();
-        }
-    })
-
-
-    $.ajax({
-        url: base_url + 'getIssignedDone',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-
-            var html = '';
-            for (i = 0; i < data.length; i++) {
-                html +=
-                    divStart + `
-                <label class="form-check-label"><input type="checkbox" class="change td2" checked data-oke="`+ data[i].id_todos + `"  data-fouc></label>
-                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="mi-check-box ml-1"></i> <strong>Completed At </strong>` + funSub(data[i].date_completed) + `</span></a>
-                `+ divEnd
-            }
-            // html += '<strong><a href="#" class="text-success"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
-            $('#tab2').html(html);
-            $('.td2').uniform({
-                wrapperClass: 'border-success-600 text-success-800'
-            });
-            $('#bg-2').html(data.length);
-            td2();
-        }
-    })
-
-    $.ajax({
-        url: base_url + 'getIssignedNores',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var nores = '';
-            for (i = 0; i < data.length; i++) {
-                nores +=
-                    divStart + `
-                <label class="form-check-label"><input type="checkbox" class="change td3" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
-                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-danger">` + data[i].subject_todos + ` ` + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i><i class="mi-sentiment-dissatisfied mr-1"></i><strong>Please Click Me</strong></span></a>
-                `+ divEnd
-            }
-            // nores += '<strong><a href="#" class="text-danger"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
-
-            $('#tab3').html(nores);
-            $('.td3').uniform({
-                wrapperClass: 'border-danger-600 text-danger-800'
-            });
-            $('#bg-3').html(data.length);
-            td3();
-
-        }
-    })
-
-    $.ajax({
-        url: base_url + 'getIassign',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            var isign = '';
-            for (i = 0; i < data.length; i++) {
-                if (data[i].status == '0') {
-                    isign +=
-                        divStart + `
-                <label class="form-check-label"><input type="checkbox" class="change td4" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
-                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-primary">` + data[i].subject_todos + ` ` + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i><i class="icon-paperplane ml-1"></i><strong> ` + data[i].name_recived + `</strong> </span></a>
-                `+ divEnd
-                } else {
-                    isign +=
-                        divStart + `
-                <label class="form-check-label"><input type="checkbox" checked class="change td4" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
-                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="icon-paperplane ml-1"></i><strong> ` + data[i].name_recived + `</strong> Completed </span></a>
-                `+ divEnd
-                }
-
-            }
-            // nores += '<strong><a href="#" class="text-danger"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
-
-            $('#tab4').html(isign);
-            $('.td4').uniform({
-                wrapperClass: 'border-dark-600 text-dark-800'
-            });
-            $('#bg-4').html(data.length);
-
-        }
-    })
-
-
-}
-
-/* ------------------------------------------------------------------------------
- *  End Get todolist My Issign
- * ---------------------------------------------------------------------------- */
-
-
 /* ------------------------------------------------------------------------------
 *  # Fungction Event
 * ---------------------------------------------------------------------------- */
 
+// Event Untuk My todolist
 function td1() {
     $('.td1').on('click', function () {
         const myid = $(this).data('oke');
@@ -264,7 +143,6 @@ function td1() {
                 ids: myid,
             },
             success: function () {
-                myIssigned();
                 myTodo();
             }
         });
@@ -281,7 +159,6 @@ function td2() {
                 ids: myid,
             },
             success: function () {
-                myIssigned();
                 myTodo();
             }
         });
@@ -298,12 +175,207 @@ function td3() {
                 ids: myid,
             },
             success: function () {
-                myIssigned();
                 myTodo();
             }
         });
     });
 }
+
+// end Event my Todolist
+
+/* ------------------------------------------------------------------------------
+ *  # Get todolist My Issign
+ * ---------------------------------------------------------------------------- */
+
+function myIssigned() {
+
+    $.ajax({
+        url: base_url + 'getIassign',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var isign = '';
+            for (i = 0; i < data.length; i++) {
+                if (data[i].status == '0') {
+                    isign +=
+                        divStart + `
+                <label class="form-check-label"><input type="checkbox" class="change issign1" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
+                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-primary">` + data[i].subject_todos + ` ` + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i><i class="icon-paperplane ml-1"></i><strong> ` + data[i].name_recived + `</strong> </span></a>
+                `+ divEnd
+                } else {
+                    isign +=
+                        divStart + `
+                <label class="form-check-label"><input type="checkbox" checked class="change issign1" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
+                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="icon-paperplane ml-1"></i><strong> ` + data[i].name_recived + `</strong> Completed </span></a>
+                `+ divEnd
+                }
+
+            }
+            // nores += '<strong><a href="#" class="text-danger"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
+
+            $('#tab1_issign').html(isign);
+            $('.issign1').uniform({
+                wrapperClass: 'border-dark-600 text-dark-800'
+            });
+            $('#issigned-bg-1').html(data.length);
+            issign1();
+        }
+    })
+
+    $.ajax({
+        url: base_url + 'getIssigned',
+        type: 'get',
+        dataType: 'json',
+        success: function (data) {
+            var baris = '';
+            for (i = 0; i < data.length; i++) {
+                baris +=
+                    divStart +
+                    `<label class="form-check-label"><input type="checkbox" class="change issign2" data-oke="` + data[i].id_todos + `"  data-fouc></label>
+                    <a href="detail?id=`+ data[i].id_todos + `&page=issign" class="text-dark"><span>` + data[i].subject_todos + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i>
+                      <strong class="text-danger">` + '<i class="mi-restore ml-1"></i> ' + timee(data[i].expired_todos) + `!</strong>
+                    </span></a> `
+                    + divEnd
+            }
+            // baris += '<strong><a href="" class="text-dark"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
+
+            $('#tab2_issign').html(baris);
+            $('.issign2').uniform();
+            $('#issigned-bg-2').html(data.length);
+            issign2();
+        }
+    })
+
+    $.ajax({
+        url: base_url + 'getIssignedNores',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var nores = '';
+            for (i = 0; i < data.length; i++) {
+                nores +=
+                    divStart + `
+                <label class="form-check-label"><input type="checkbox" class="change issign3" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
+                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-danger">` + data[i].subject_todos + ` ` + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i><i class="mi-sentiment-dissatisfied mr-1"></i><strong>Please Click Me</strong></span></a>
+                `+ divEnd
+            }
+            // nores += '<strong><a href="#" class="text-danger"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
+
+            $('#tab3_issign').html(nores);
+            $('.issign3').uniform({
+                wrapperClass: 'border-danger-600 text-danger-800'
+            });
+            $('#issigned-bg-3').html(data.length);
+            issign3();
+
+        }
+    })
+
+    
+
+    $.ajax({
+        url: base_url + 'getIssignedDone',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+
+            var html = '';
+            for (i = 0; i < data.length; i++) {
+                html +=
+                    divStart + `
+                <label class="form-check-label"><input type="checkbox" class="change issign4" checked data-oke="`+ data[i].id_todos + `"  data-fouc></label> 
+                <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="mi-check-box ml-1"></i> <strong>Completed At </strong>` + funSub(data[i].date_completed) + `</span></a>
+                <i class="icon-bookmark2 ml-2 text-warning"></i>`+ divEnd
+            }
+            // html += '<strong><a href="#" class="text-success"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
+            $('#tab4_issign').html(html);
+            $('.issign4').uniform({
+                wrapperClass: 'border-success-600 text-success-800'
+            });
+            $('#issigned-bg-4').html(data.length);
+            issign4();
+        }
+    })
+
+
+}
+
+/* ------------------------------------------------------------------------------
+ *  End Get todolist My Issign
+ * ---------------------------------------------------------------------------- */
+
+// Event Untuk My todolist
+function issign1() {
+    $('.issign1').on('click', function () {
+        const myid = $(this).data('oke');
+        $.ajax({
+            url: base_url + 'changestatus',
+            type: 'post',
+            data: {
+                ids: myid,
+            },
+            success: function () {
+                myIssigned();
+            }
+        });
+    });
+}
+
+function issign2() {
+    $('.issign2').on('click', function () {
+        const myid = $(this).data('oke');
+        $.ajax({
+            url: base_url + 'changestatus',
+            type: 'post',
+            data: {
+                ids: myid,
+            },
+            success: function () {
+                myIssigned();
+            }
+        });
+    });
+}
+
+function issign3() {
+    $('.issign3').on('click', function () {
+        const myid = $(this).data('oke');
+        $.ajax({
+            url: base_url + 'changestatus',
+            type: 'post',
+            data: {
+                ids: myid,
+            },
+            success: function () {
+                myIssigned();
+            }
+        });
+    });
+}
+
+function issign4() {
+    $('.issign4').on('click', function () {
+        const myid = $(this).data('oke');
+        $.ajax({
+            url: base_url + 'changestatus',
+            type: 'post',
+            data: {
+                ids: myid,
+            },
+            success: function () {
+                myIssigned();
+            }
+        });
+    });
+}
+
+// end Event my Todolist
+
+
+/* ------------------------------------------------------------------------------
+*  End Fungction Event
+* ---------------------------------------------------------------------------- */
+
 
 
 
@@ -320,35 +392,4 @@ function timee(time) {
     return jam[0] + ':' + jam[1] + ' Again !';
 }
 
-function getDateTime() {
-    n = new Date();
-    y = n.getFullYear();
-    m = n.getMonth() + 1;
-    d = n.getDate();
-    mm = n.getMinutes();
-    h = n.getHours();
-    s = n.getSeconds();
-    ms = n.getMilliseconds();
-
-
-    if (m < 10) {
-        m = '0' + m;
-    }
-
-    if (d < 10) {
-        d = '0' + d;
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    if (h < 10) {
-        h = '0' + h;
-    }
-    if (ms < 10) {
-        ms = '0' + ms;
-    }
-
-    return d + '-' + m + '-' + y + ' ' + h + ':' + mm + ':' + ms;
-}
 
