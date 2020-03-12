@@ -271,7 +271,7 @@ function myIssigned() {
         }
     })
 
-    
+
 
     $.ajax({
         url: base_url + 'getIssignedDone',
@@ -285,7 +285,7 @@ function myIssigned() {
                     divStart + `
                 <label class="form-check-label"><input type="checkbox" class="change issign4" checked data-oke="`+ data[i].id_todos + `"  data-fouc></label> 
                 <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="mi-check-box ml-1"></i> <strong>Completed At </strong>` + funSub(data[i].date_completed) + `</span></a>
-                <i class="icon-bookmark2 ml-2 text-warning"></i>`+ divEnd
+                <i class="icon-bookmark`+ data[i].flag + ` ml-2 text-warning"></i>` + divEnd
             }
             // html += '<strong><a href="#" class="text-success"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
             $('#tab4_issign').html(html);

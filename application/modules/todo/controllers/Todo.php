@@ -163,4 +163,11 @@ class Todo extends MY_Controller
 		$this->M_todo->changestatus($id_todos);
 		redirect('todo/detail?id=' . $id_todos . '&page=' . $page);
 	}
+	public function flag()
+	{
+		$id_todos = $this->input->get('ids');
+		$page = $this->input->get('page');
+		$this->M_todo->flag($id_todos);
+		redirect('todo/detail?id=' . $id_todos . '&page=' . $page);
+	}
 }

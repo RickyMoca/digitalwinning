@@ -1,5 +1,5 @@
 /*
-SQLyog Ultimate v11.11 (32 bit)
+SQLyog Ultimate v11.11 (64 bit)
 MySQL - 5.5.5-10.4.11-MariaDB : Database - inventory
 *********************************************************************
 */
@@ -113,22 +113,22 @@ insert  into `sales`(`id`,`id_sales`,`nama`,`tlp`,`no_sku`,`harga_satuan`,`qty`,
 DROP TABLE IF EXISTS `todos`;
 
 CREATE TABLE `todos` (
-  `id_todos` int(1) NOT NULL AUTO_INCREMENT,
+  `id_todos` int(3) NOT NULL AUTO_INCREMENT,
   `user_agent` varchar(20) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
   `user_recived` varchar(20) DEFAULT NULL,
   `subject_todos` varchar(255) DEFAULT NULL,
   `message_todos` text DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
-  `note` text DEFAULT NULL,
   `due_date` datetime DEFAULT NULL,
   `date_completed` datetime DEFAULT NULL,
+  `flag` int(11) DEFAULT 3,
   PRIMARY KEY (`id_todos`)
-) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `todos` */
 
-insert  into `todos`(`id_todos`,`user_agent`,`date_created`,`user_recived`,`subject_todos`,`message_todos`,`status`,`note`,`due_date`,`date_completed`) values (128,'DWG02201','2020-03-12 02:42:46','DWG02201','#NJV029837292','testttt',0,NULL,'2020-03-12 23:59:00','0000-00-00 00:00:00'),(129,'DWG02201','2020-03-12 02:43:11','DWG03205','#NJV029837292','testttt',1,NULL,'2020-03-12 23:59:00','2020-03-12 04:12:11'),(130,'DWG02201','2020-03-12 03:52:36','DWG02201','#NJV029837292','uyguy',1,NULL,'2020-03-25 23:59:00','2020-03-12 03:58:31'),(131,'DWG02201','2020-03-12 04:11:48','DWG03207','#NJV029837292','njnjknjnjkn',0,NULL,'2020-03-10 23:59:00','0000-00-00 00:00:00');
+insert  into `todos`(`id_todos`,`user_agent`,`date_created`,`user_recived`,`subject_todos`,`message_todos`,`status`,`due_date`,`date_completed`,`flag`) values (128,'DWG02201','2020-03-12 02:42:46','DWG02201','#NJV029837292','testttt',0,'2020-03-12 23:59:00','0000-00-00 00:00:00',3),(129,'DWG02201','2020-03-12 02:43:11','DWG03205','#NJV029837292','testttt',1,'2020-03-12 23:59:00','2020-03-12 04:12:11',2),(130,'DWG02201','2020-03-12 03:52:36','DWG02201','#NJV029837292','uyguy',1,'2020-03-25 23:59:00','2020-03-12 03:58:31',2),(131,'DWG02201','2020-03-12 04:11:48','DWG03207','#NJV029837292','njnjknjnjkn',0,'2020-03-10 23:59:00','0000-00-00 00:00:00',3),(132,'DWG02201','2020-03-12 15:36:53','DWG02201','#12324543546','sdsdsd',0,'2020-03-13 23:59:00',NULL,2),(133,'DWG02201','2020-03-12 15:39:46','DWG03204','#12324543546','dsdsadsda',1,'2020-03-11 23:59:00','2020-03-12 15:40:29',2);
 
 /*Table structure for table `todos_category` */
 
@@ -151,13 +151,12 @@ CREATE TABLE `todos_reply` (
   `id_todos` int(11) DEFAULT NULL,
   `reply_todos` text DEFAULT NULL,
   `date_reply` datetime DEFAULT NULL,
-  `flag` enum('2','3') DEFAULT '3',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `todos_reply` */
 
-insert  into `todos_reply`(`id`,`id_todos`,`reply_todos`,`date_reply`,`flag`) values (19,128,'ok','2020-03-12 04:21:52','3'),(20,129,'ok','2020-03-12 03:50:23','2'),(21,130,'ok','2020-03-12 03:53:38','3');
+insert  into `todos_reply`(`id`,`id_todos`,`reply_todos`,`date_reply`) values (19,128,'ok','2020-03-12 04:21:52'),(20,129,'ok','2020-03-12 03:50:23'),(21,130,'ok','2020-03-12 03:53:38');
 
 /*Table structure for table `user` */
 
@@ -310,7 +309,7 @@ DROP TABLE IF EXISTS `v-todos`;
 /*!50001 DROP TABLE IF EXISTS `v-todos` */;
 
 /*!50001 CREATE TABLE  `v-todos`(
- `id_todos` int(1) ,
+ `id_todos` int(3) ,
  `user_agent` varchar(20) ,
  `name_agent` varchar(128) ,
  `user_recived` varchar(20) ,
@@ -324,7 +323,7 @@ DROP TABLE IF EXISTS `v-todos`;
  `date_reply` datetime ,
  `due_date` datetime ,
  `expired_todos` time ,
- `flag` enum('2','3') 
+ `flag` int(11) 
 )*/;
 
 /*Table structure for table `v-userr` */
@@ -365,7 +364,7 @@ DROP TABLE IF EXISTS `v-userr`;
 /*!50001 DROP TABLE IF EXISTS `v-todos` */;
 /*!50001 DROP VIEW IF EXISTS `v-todos` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v-todos` AS select `todos`.`id_todos` AS `id_todos`,`todos`.`user_agent` AS `user_agent`,`xe`.`name` AS `name_agent`,`todos`.`user_recived` AS `user_recived`,`xc`.`name` AS `name_recived`,`todos`.`subject_todos` AS `subject_todos`,`todos`.`message_todos` AS `message_todos`,`todos`.`status` AS `status`,`todos_reply`.`reply_todos` AS `reply_todos`,`todos`.`date_created` AS `date_created`,`todos`.`date_completed` AS `date_completed`,`todos_reply`.`date_reply` AS `date_reply`,`todos`.`due_date` AS `due_date`,timediff(`todos`.`due_date`,current_timestamp()) AS `expired_todos`,`todos_reply`.`flag` AS `flag` from (((`todos` left join `todos_reply` on(`todos`.`id_todos` = `todos_reply`.`id_todos`)) left join `user` `xe` on(`xe`.`id` = `todos`.`user_agent`)) left join `user` `xc` on(`xc`.`id` = `todos`.`user_recived`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v-todos` AS select `todos`.`id_todos` AS `id_todos`,`todos`.`user_agent` AS `user_agent`,`xe`.`name` AS `name_agent`,`todos`.`user_recived` AS `user_recived`,`xc`.`name` AS `name_recived`,`todos`.`subject_todos` AS `subject_todos`,`todos`.`message_todos` AS `message_todos`,`todos`.`status` AS `status`,`todos_reply`.`reply_todos` AS `reply_todos`,`todos`.`date_created` AS `date_created`,`todos`.`date_completed` AS `date_completed`,`todos_reply`.`date_reply` AS `date_reply`,`todos`.`due_date` AS `due_date`,timediff(`todos`.`due_date`,current_timestamp()) AS `expired_todos`,`todos`.`flag` AS `flag` from (((`todos` left join `todos_reply` on(`todos`.`id_todos` = `todos_reply`.`id_todos`)) left join `user` `xe` on(`xe`.`id` = `todos`.`user_agent`)) left join `user` `xc` on(`xc`.`id` = `todos`.`user_recived`)) */;
 
 /*View structure for view v-userr */
 

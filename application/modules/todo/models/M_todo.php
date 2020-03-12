@@ -126,7 +126,6 @@ class M_todo extends CI_Model
             $mesaage = 'Reply message succesful';
             info_message($mesaage);
             redirect('todo/detail?id=' . $id . '&page=' . $page);
-
         }
         // Jalankan Fungsi Update
         $this->db->where('id_todos', $id);
@@ -155,6 +154,30 @@ class M_todo extends CI_Model
                 'date_completed' => tgl_now()
             );
             $mesaage = 'Todo has been chgange to Completed';
+            info_message($mesaage);
+        }
+        $this->db->where('id_todos', $id_todos);
+        $this->db->set($data);
+        $this->db->update('todos');
+    }
+
+    public function flag($id_todos)
+    {
+
+        $this->db->where('id_todos', $id_todos);
+        $result = $this->db->get('todos')->row_array();
+
+        if ($result['flag'] == '3') {
+            $data = array(
+                'flag' => '2'
+            );
+            $mesaage = 'Flag set to flaged';
+            info_message($mesaage);
+        } else {
+            $data = array(
+                'flag' => '3'
+            );
+            $mesaage = 'Flag set to default';
             info_message($mesaage);
         }
         $this->db->where('id_todos', $id_todos);

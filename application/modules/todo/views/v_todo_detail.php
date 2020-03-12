@@ -14,9 +14,9 @@
         <div class="card-body bg-light">
 
             <div class="col-md-12">
-                <?php if ($detail['user_agent']==$this->session->userdata('id')) { ?>
-                    <i class="icon-bookmark<?=$detail['flag'] ?> float-right ml-2 icon-2x text-warning"></i>
-                <?php }?>
+                <?php if ($detail['user_agent'] == $this->session->userdata('id')) { ?>
+                    <a href="<?= base_url(); ?>todo/flag?ids=<?= $detail['id_todos'] . '&page=' . $page ?>"> <i class="icon-bookmark<?= $detail['flag'] ?> float-right ml-2 icon-2x text-warning"></i></a>
+                <?php } ?>
 
                 <h1><a href="<?= base_url(); ?>todo/gantiStats?ids=<?= $detail['id_todos'] . '&page=' . $page ?>" class="text-success">
                         <?php if ($detail['status'] == '0') { ?>
@@ -46,7 +46,7 @@
                 <h5><i class="mi-reply mr-2"></i><?= $detail['reply_todos'] ?></h5>
             </div>
 
-            <form action="<?= base_url('todo/replyTodo?page=').$page?>" method="post">
+            <form action="<?= base_url('todo/replyTodo?page=') . $page ?>" method="post">
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <input hidden name="id_todos" value="<?= $detail['id_todos']; ?>"></input>
