@@ -201,14 +201,16 @@ function myIssigned() {
                         divStart + `
                 <label class="form-check-label"><input type="checkbox" class="change issign1" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
                 <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-primary">` + data[i].subject_todos + ` ` + data[i].message_todos + `<i class="mi-swap-horiz ml-1"></i><i class="icon-paperplane ml-1"></i><strong> ` + data[i].name_recived + `</strong> </span></a>
-                `+ divEnd
+                <i class="icon-bookmark` + data[i].flag + ` ml-2 text-warning flag"></i>` + divEnd
+
                 } else {
                     isign +=
                         divStart + `
                 <label class="form-check-label"><input type="checkbox" checked class="change issign1" data-oke="`+ data[i].id_todos + `"  data-fouc></label>
                 <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="icon-paperplane ml-1"></i><strong> ` + data[i].name_recived + `</strong> Completed </span></a>
-                `+ divEnd
+                <i class="icon-bookmark` + data[i].flag + ` ml-2 text-warning flag"></i>` + divEnd
                 }
+
 
             }
             // nores += '<strong><a href="#" class="text-danger"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
@@ -219,6 +221,7 @@ function myIssigned() {
             });
             $('#issigned-bg-1').html(data.length);
             issign1();
+            clickFlag();
         }
     })
 
@@ -285,7 +288,8 @@ function myIssigned() {
                     divStart + `
                 <label class="form-check-label"><input type="checkbox" class="change issign4" checked data-oke="`+ data[i].id_todos + `"  data-fouc></label> 
                 <a href="detail?id=`+ data[i].id_todos + `&page=issign"><span class="text-success"><del>` + data[i].subject_todos + ` ` + data[i].message_todos + `</del><i class="mi-swap-horiz ml-1"></i><i class="mi-check-box ml-1"></i> <strong>Completed At </strong>` + funSub(data[i].date_completed) + `</span></a>
-                <i class="icon-bookmark`+ data[i].flag + ` ml-2 text-warning"></i>` + divEnd
+                <i class="icon-bookmark`+ data[i].flag + ` ml-2 text-warning flag" data-id="` + data[i].id_todos + `"></i>` + divEnd
+
             }
             // html += '<strong><a href="#" class="text-success"><i class="mi-cached ml-1"></i> Load More . .</a></strong>';
             $('#tab4_issign').html(html);
@@ -369,15 +373,28 @@ function issign4() {
     });
 }
 
+function clickFlag() {
+    $('.flag').on('click', function () {
+        const myid = $(this).data('id');
+        $.ajax({
+            url: base_url + 'flag2',
+            type: 'GET',
+            data: {
+                ids: myid,
+            },
+            success: function () {
+                myIssigned();
+            }
+        });
+    });
+}
+
 // end Event my Todolist
 
 
 /* ------------------------------------------------------------------------------
 *  End Fungction Event
 * ---------------------------------------------------------------------------- */
-
-
-
 
 function funSub(strr) {
     var sbs = strr.split(' ');
