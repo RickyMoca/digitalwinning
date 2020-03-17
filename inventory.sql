@@ -128,7 +128,7 @@ CREATE TABLE `todos` (
 
 /*Data for the table `todos` */
 
-insert  into `todos`(`id_todos`,`user_agent`,`date_created`,`user_recived`,`subject_todos`,`message_todos`,`status`,`due_date`,`date_completed`,`flag`) values (128,'DWG02201','2020-03-12 02:42:46','DWG02201','#NJV029837292','testttt',0,'2020-03-12 23:59:00','0000-00-00 00:00:00',3),(129,'DWG02201','2020-03-12 02:43:11','DWG03205','#NJV029837292','testttt',1,'2020-03-12 23:59:00','2020-03-12 04:12:11',2),(130,'DWG02201','2020-03-12 03:52:36','DWG02201','#NJV029837292','uyguy',1,'2020-03-25 23:59:00','2020-03-12 03:58:31',2),(131,'DWG02201','2020-03-12 04:11:48','DWG03207','#NJV029837292','njnjknjnjkn',0,'2020-03-10 23:59:00','0000-00-00 00:00:00',3),(132,'DWG02201','2020-03-12 15:36:53','DWG02201','#12324543546','sdsdsd',0,'2020-03-13 23:59:00',NULL,2),(133,'DWG02201','2020-03-12 15:39:46','DWG03204','#12324543546','dsdsadsda',1,'2020-03-11 23:59:00','2020-03-12 15:40:29',2);
+insert  into `todos`(`id_todos`,`user_agent`,`date_created`,`user_recived`,`subject_todos`,`message_todos`,`status`,`due_date`,`date_completed`,`flag`) values (128,'DWG02201','2020-03-12 02:42:46','DWG02201','#NJV029837292','testttt',1,'2020-03-12 23:59:00','2020-03-12 17:00:56',3),(129,'DWG02201','2020-03-12 02:43:11','DWG03205','#NJV029837292','testttt',1,'2020-03-12 23:59:00','2020-03-12 04:12:11',3),(130,'DWG02201','2020-03-12 03:52:36','DWG02201','#NJV029837292','uyguy',1,'2020-03-25 23:59:00','2020-03-12 03:58:31',3),(131,'DWG02201','2020-03-12 04:11:48','DWG03207','#NJV029837292','njnjknjnjkn',1,'2020-03-10 23:59:00','2020-03-12 20:40:13',3),(132,'DWG02201','2020-03-12 15:36:53','DWG02201','#12324543546','sdsdsd',1,'2020-03-13 23:59:00','2020-03-12 17:00:55',3),(133,'DWG02201','2020-03-12 15:39:46','DWG03204','#12324543546','dsdsadsda',1,'2020-03-11 23:59:00','2020-03-12 20:41:42',3);
 
 /*Table structure for table `todos_category` */
 
@@ -193,11 +193,11 @@ CREATE TABLE `user_access_menu` (
   KEY `menu_id` (`menu_id`),
   CONSTRAINT `user_access_menu_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`),
   CONSTRAINT `user_access_menu_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `user_menu` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_access_menu` */
 
-insert  into `user_access_menu`(`id`,`role_id`,`menu_id`) values (23,1,1),(24,1,2),(25,1,3),(26,2,1),(27,2,2),(28,3,1);
+insert  into `user_access_menu`(`id`,`role_id`,`menu_id`) values (23,1,1),(24,1,2),(25,1,3),(26,2,1),(27,2,2),(28,3,1),(29,1,4),(30,3,4);
 
 /*Table structure for table `user_menu` */
 
@@ -211,7 +211,7 @@ CREATE TABLE `user_menu` (
 
 /*Data for the table `user_menu` */
 
-insert  into `user_menu`(`id`,`menu`) values (1,'Todo'),(2,'Warehouse'),(3,'Admin');
+insert  into `user_menu`(`id`,`menu`) values (1,'Todo'),(2,'Warehouse'),(3,'Admin'),(4,'Campaign');
 
 /*Table structure for table `user_role` */
 
@@ -243,11 +243,11 @@ CREATE TABLE `user_sub_menu` (
   PRIMARY KEY (`id`),
   KEY `menu_id` (`menu_id`),
   CONSTRAINT `user_sub_menu_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `user_menu` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_sub_menu` */
 
-insert  into `user_sub_menu`(`id`,`menu_id`,`title`,`url`,`icon`,`is_active`,`position`) values (1,3,'Dashboard','admin','icon-home4 mr-2',0,2),(2,2,'Inventory','user/inventory','icon-home4 mr-2',0,3),(3,2,'In Bound','user/purchase','icon-home4 mr-2',0,4),(4,2,'Return','user/return','icon-home4 mr-2',0,5),(5,2,'Sales','user/sales','icon-home4 mr-2',0,6),(6,1,'Home','todo','icon-home4',1,1),(7,1,'My Todolist','todo/todolist','icon-clipboard2',1,7),(11,3,'Manage User','admin','icon-user',1,8),(13,1,'My Issigned','todo/issign','icon-paperplane',1,9);
+insert  into `user_sub_menu`(`id`,`menu_id`,`title`,`url`,`icon`,`is_active`,`position`) values (1,3,'Dashboard','admin','icon-home4 mr-2',0,2),(2,2,'Inventory','user/inventory','icon-home4 mr-2',0,3),(3,2,'In Bound','user/purchase','icon-home4 mr-2',0,4),(4,2,'Return','user/return','icon-home4 mr-2',0,5),(5,2,'Sales','user/sales','icon-home4 mr-2',0,6),(6,1,'Home','todo','icon-home4',1,1),(7,1,'My Todolist','todo/todolist','icon-clipboard2',1,7),(11,3,'Manage User','admin','icon-user',1,8),(13,1,'My Issigned','todo/issign','icon-paperplane',1,9),(14,4,'Campaign','campaign','icon-paperplane',1,10);
 
 /* Function  structure for function  `get_id_user` */
 
