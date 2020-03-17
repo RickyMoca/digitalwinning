@@ -1,68 +1,62 @@
 <div class="col-lg-12">
-    <div class="card" style="">
+    <div class="card">
         <div class="card-header header-elements-inline">
-            <h3 class="card-title">User Management</h3>
-            <a href="" class="text-dark" data-toggle="modal" data-target="#modal_theme_primary">
-                <i class="icon-user-plus mr-3 icon-2x"></i>
-            </a>
-
+            <h1 class="card-title"> <i class="icon-info22 mr-2 icon-2x"></i>Detail Promo</h1>
         </div>
-
 
         <div class="card-body">
-            <table class="table datatable-basic">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = '1' ?>
-                    <?php foreach ($getuser as $user) : ?>
-                        <tr>
-                            <td><?= $no ?></td>
-                            <td><?= $user['name']; ?></td>
-                            <td><?= $user['email']; ?></td>
-                            <td><?= $user['role']; ?></td>
-                            <td>
-                                <div class="form-check form-check-switchery">
-                                    <label class="form-check-label">
-                                        <?php if ($user['is_active'] == 1) {
-                                            echo ' <input type="checkbox" class="form-check-input-switchery" value="' . $user['is_active'] . '" name="status" checked data-fouc>';
-                                        } else {
-                                            echo ' <input type="checkbox" class="form-check-input-switchery" value="' . $user['is_active'] . '" name="status" data-fouc>';
-                                        } ?>
-                                    </label>
-                                </div>
-                            </td>
-                            <td>
-
-                                <button type="button" class="btn btn-sm bg-dark" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="icon-spinner4"></i>
-                                </button>
-
-                                <div class="dropdown-menu" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(56px, 36px, 0px);">
-                                    <a href="<?= base_url(); ?>admin/deletuser?id=<?= $user['id']; ?>" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
-                                    <a href="<?= base_url(); ?>admin?id=<?= $user['id']; ?>" data-toggle="modal" data-target="#modal_edit" class="dropdown-item"><i class="icon-screen-full"></i> Edit</a>
-
-                                </div>
-
-                            </td>
-                        </tr>
-                        <?php $no++; ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-
+            <div class="row">
+                <div class="col-md-auto  bg-light border-right-3 border-right-grey px-3 py-3 mt-1">
+                    <h1><strong> Coredash</strong></h1>
+                    <hr>
+                    <h3><i class="icon-cash3 mr-2 icon-2x"></i><strong>Rp.175,000 </strong></h3>
+                    <h6><i class="icon-unlink mr-2 icon-2x"></i><strong> </strong>: <a href=""> http://gudangperkakas.com/lp-1</a></h6>
+                    <h6><i class="icon-clipboard6 mr-2 icon-2x"></i> <strong>Note </strong>: Beli 1 Gratis 1 Free ongkir</h6>
+                    <h5><strong>Status </strong>: Active</h5>
+                </div>
+            </div>
         </div>
     </div>
+
+
+</div>
+
+<div class="col-lg-12 mx-auto">
+    <div class="card bg-light">
+        <div class="card-title px-3 py-1 bg-grey">
+            <h1 class="text-light"> <i class="mi-textsms mr-1 mi-3x"></i> <strong>COMMENT</strong></h1>
+        </div>
+
+        <div class="card-body bg-light">
+
+            <ul class="mt-5">
+                <li class="media">
+                    <div class="mr-3 text-grey">
+                        <i class="mi-account-circle mi-3x"></i>
+                    </div>
+
+                    <div class="media-body">
+                        <div class="media-chat-item">Itu maksudnya beli2 gratis 1 pcs coredas gitu ya ?</div>
+                        <div class="font-size-sm text-muted mt-2">Mohamad Ricky Mon, 9:54 am </div>
+                    </div>
+                </li>
+
+                <li class="media media-chat-item-reverse">
+                    <div class="media-body">
+                        <div class="media-chat-item">Iyups Betul bray</div>
+                        <div class="font-size-sm text-muted mt-2">Me Mon, 9:54 am </div>
+                    </div>
+
+                    <div class="ml-2 text-blue">
+                        <i class="mi-account-circle mi-3x"></i>
+                    </div>
+                </li>
+
+                <textarea name="enter-message" class="form-control my-3 bg-light" rows="3" cols="1" placeholder="Enter your comment..."></textarea>
+                <button type="button" class="btn bg-dark btn-labeled btn-labeled-right float-right"><b><i class="icon-paperplane"></i></b> Send</button>
+        </div>
+    </div>
+</div>
 </div>
 
 

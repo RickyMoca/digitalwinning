@@ -1,9 +1,10 @@
 <div class="col-lg-12">
-    <div class="card" style="">
+    <div class="card">
         <div class="card-header header-elements-inline">
-            <h3 class="card-title">User Management</h3>
-            <a href="" class="text-dark" data-toggle="modal" data-target="#modal_theme_primary">
-                <i class="icon-user-plus mr-3 icon-2x"></i>
+
+            <h3 class="card-title"> <i class="mi-record-voice-over mr-3 mi-2x"></i>INFO TRIAL PRODUCT</h3>
+            <a href="" class="text-danger" data-toggle="modal" data-target="#modal_theme_primary">
+                <i class="mi-arrow-drop-down-circle mr-3 mi-2x"></i>
             </a>
 
         </div>
@@ -14,9 +15,11 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Promo</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Note</th>
+                        <th scope="col">Link</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
 
@@ -28,9 +31,12 @@
                     <?php foreach ($getuser as $user) : ?>
                         <tr>
                             <td><?= $no ?></td>
-                            <td><?= $user['name']; ?></td>
-                            <td><?= $user['email']; ?></td>
-                            <td><?= $user['role']; ?></td>
+                            <td>Supernat</td>
+                            <td>Coredash Beli 2 gratis 1</td>
+                            <td>145,000</td>
+                            <td>B1G1 pembelian 1 pcs</td>
+                            <td>Http://supernat.id/page2</td>
+
                             <td>
                                 <div class="form-check form-check-switchery">
                                     <label class="form-check-label">
@@ -44,15 +50,12 @@
                             </td>
                             <td>
 
-                                <button type="button" class="btn btn-sm bg-dark" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="icon-spinner4"></i>
+                                <button type="button" class="btn btn-sm bg-light" data-popup="tooltip" data-original-title="View More">
+                                    <i class="mi-visibility"></i>
                                 </button>
-
-                                <div class="dropdown-menu" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(56px, 36px, 0px);">
-                                    <a href="<?= base_url(); ?>admin/deletuser?id=<?= $user['id']; ?>" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
-                                    <a href="<?= base_url(); ?>admin?id=<?= $user['id']; ?>" data-toggle="modal" data-target="#modal_edit" class="dropdown-item"><i class="icon-screen-full"></i> Edit</a>
-
-                                </div>
+                                <button type="button" class="btn btn-sm bg-light" data-popup="tooltip" data-original-title="Go to Link page">
+                                    <i class="mi-near-me"></i>
+                                </button>
 
                             </td>
                         </tr>

@@ -1,0 +1,14 @@
+---Table Campaign---
+id (int)
+name_campaign (var)
+note (text)
+link (text)
+date_created (datetime)
+status (int)
+
+--Table Campaign_coment--
+id (int)
+id_campaign (int)
+coment (text)
+type (boolean)
+date_created (datetime)
