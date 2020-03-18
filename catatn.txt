@@ -6,6 +6,7 @@ link (text)
 date_created (datetime)
 status (int)
 
+
 --Table Campaign_coment--
 id (int)
 id_campaign (int)
