@@ -16,6 +16,24 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`inventory` /*!40100 DEFAULT CHARACTER S
 
 USE `inventory`;
 
+/*Table structure for table `absensi` */
+
+DROP TABLE IF EXISTS `absensi`;
+
+CREATE TABLE `absensi` (
+  `id` int(5) DEFAULT NULL,
+  `id_user` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `jam_masuk` time DEFAULT NULL,
+  `jam_pulang` time DEFAULT NULL,
+  `status` int(5) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `absensi` */
+
+insert  into `absensi`(`id`,`id_user`,`date`,`jam_masuk`,`jam_pulang`,`status`,`note`) values (NULL,'DWG02201','2020-03-30','21:03:36',NULL,1,NULL);
+
 /*Table structure for table `barang` */
 
 DROP TABLE IF EXISTS `barang`;
@@ -49,6 +67,24 @@ CREATE TABLE `config` (
 /*Data for the table `config` */
 
 insert  into `config`(`id`,`name_app`,`icon_app`) values (1,'System Dwg','logo.icon.png');
+
+/*Table structure for table `cs_followup` */
+
+DROP TABLE IF EXISTS `cs_followup`;
+
+CREATE TABLE `cs_followup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `fu1` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `fu2` char(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `fu3` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  `fu4` text CHARACTER SET utf8mb4 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `cs_followup` */
+
+insert  into `cs_followup`(`id`,`type`,`fu1`,`fu2`,`fu3`,`fu4`) values (1,'BANK TRANSFER','Selamat siang kak aziz, ditunggu konfirmasi pembayarannya ya kak, pesanan kakak sudah kami siapkan dan tinggal kirim ya kak.\r\nditunggu kak terima kasih &#9786;','&#9786;','hallo kak ???? \r\nuntuk pembayarannya kita juga ada sistem bayar di tempat atau COD ???? \r\nkalo kakak sibuk dan gak sempat untuk transfer kita saranin untuk pilih sistem cod ini ya kak ???? \r\njadi nanti kakak tinggal bayar aja deh setelah barang sampai ke kurir yg antar ???????? \r\ngimana kak mau cod aja ? ????','hallo kak selamt pagi ???? \r\nbarangnya sudah kami packing dan siap kirim ya kak ???? \r\nmohon di konfirmasi agar barang kami kirim hari ini ????????');
 
 /*Table structure for table `purchase` */
 
@@ -193,11 +229,11 @@ CREATE TABLE `user_access_menu` (
   KEY `menu_id` (`menu_id`),
   CONSTRAINT `user_access_menu_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`),
   CONSTRAINT `user_access_menu_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `user_menu` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_access_menu` */
 
-insert  into `user_access_menu`(`id`,`role_id`,`menu_id`) values (23,1,1),(24,1,2),(25,1,3),(26,2,1),(27,2,2),(28,3,1),(29,1,4),(30,3,4);
+insert  into `user_access_menu`(`id`,`role_id`,`menu_id`) values (23,1,1),(24,1,2),(25,1,3),(26,2,1),(27,2,2),(28,3,1),(29,1,4),(30,3,4),(31,1,5),(32,2,5),(33,3,5),(34,1,7),(35,2,7),(36,3,7);
 
 /*Table structure for table `user_menu` */
 
@@ -207,11 +243,11 @@ CREATE TABLE `user_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_menu` */
 
-insert  into `user_menu`(`id`,`menu`) values (1,'Todo'),(2,'Warehouse'),(3,'Admin'),(4,'Campaign');
+insert  into `user_menu`(`id`,`menu`) values (1,'Home'),(2,'Warehouse'),(3,'Admin'),(4,'Campaign'),(5,'Absen'),(7,'Todo');
 
 /*Table structure for table `user_role` */
 
@@ -243,11 +279,11 @@ CREATE TABLE `user_sub_menu` (
   PRIMARY KEY (`id`),
   KEY `menu_id` (`menu_id`),
   CONSTRAINT `user_sub_menu_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `user_menu` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_sub_menu` */
 
-insert  into `user_sub_menu`(`id`,`menu_id`,`title`,`url`,`icon`,`is_active`,`position`) values (1,3,'Dashboard','admin','icon-home4 mr-2',0,2),(2,2,'Inventory','user/inventory','icon-home4 mr-2',0,3),(3,2,'In Bound','user/purchase','icon-home4 mr-2',0,4),(4,2,'Return','user/return','icon-home4 mr-2',0,5),(5,2,'Sales','user/sales','icon-home4 mr-2',0,6),(6,1,'Home','todo','icon-home4',1,1),(7,1,'My Todolist','todo/todolist','icon-clipboard2',1,7),(11,3,'Manage User','admin','icon-user',1,8),(13,1,'My Issigned','todo/issign','icon-paperplane',1,9),(14,4,'Campaign','campaign','icon-paperplane',1,10);
+insert  into `user_sub_menu`(`id`,`menu_id`,`title`,`url`,`icon`,`is_active`,`position`) values (1,3,'Dashboard','admin','icon-home4 mr-2',0,2),(2,2,'Inventory','user/inventory','icon-home4 mr-2',0,3),(3,2,'In Bound','user/purchase','icon-home4 mr-2',0,4),(4,2,'Return','user/return','icon-home4 mr-2',0,5),(5,2,'Sales','user/sales','icon-home4 mr-2',0,6),(6,1,'Home','home','icon-home4',1,1),(7,7,'My Todolist','todo/todolist','icon-clipboard2',1,7),(11,3,'Manage User','admin','icon-user',1,8),(13,7,'My Issigned','todo/issign','icon-paperplane',1,9),(14,4,'Campaign','campaign','icon-paperplane',0,10),(15,5,'Absen','absen','mi-touch-app',1,11);
 
 /* Function  structure for function  `get_id_user` */
 
