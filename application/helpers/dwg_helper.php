@@ -230,6 +230,15 @@
 
             }
 
+            function tglsajahdb()
+            {
+
+                date_default_timezone_set('Asia/Jakarta');
+                return date('Y-m-d');
+                // untuk untuk mendapatkan waktu dan tanggal skrang
+
+            }
+
             function dateTime($tgl)
             {
 
