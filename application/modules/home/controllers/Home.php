@@ -15,40 +15,18 @@ class Home extends MY_Controller
 	{
 		$data['title'] = "Home";
 		$data['page_name'] = "Home";
+		$data['data_absen'] = $this->M_home->dataabsen();
 		load_template('v_index', $data);
 	}
 
 	/* ------------------------------------------------------------------------------
-	*  # Controller Untuk Todolist
+	*  # Controller Untuk absensi
 	* ---------------------------------------------------------------------------- */
 
 
 	public function absenyuk()
 	{
 		$this->M_home->absenklik();
-		$data['title'] = "Home";
-		$data['page_name'] = "Home";
-		load_template('v_index', $data);
-	}
-
-
-
-
-	/* ------------------------------------------------------------------------------
-	*  # Controller Untuk ganti status
-	* ---------------------------------------------------------------------------- */
-
-	public function changestatus()
-	{
-		$id_todos = $this->input->post('ids');
-		$this->M_home->changestatus($id_todos);
-	}
-
-	public function gantiStats()
-	{
-		$id_todos = $this->input->get('ids');
-		$page = $this->input->get('page');
-		$this->M_home->changestatus($id_todos);
-		redirect('todo/detail?id=' . $id_todos . '&page=' . $page);
+		redirect('home');
 	}
 }

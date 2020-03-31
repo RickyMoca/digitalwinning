@@ -37,18 +37,20 @@
 
         <h3 class="my-3"> Welcome to App <strong class="text-info">Digital Winning</strong></h3>
         <div class="row mx-auto mb-2">
-
-
         </div>
-
-        <div class="card bg-info py-2">
+        <!-- <div class="card bg-info py-2">
             <h4> <i class="mi-info mr-1 mi-2x"></i>Nampaknya kamu belum absen hari ini! <strong> absen dulu yuk sayang</strong></h4>
-        </div>
-        <!-- <div class="card bg-success py-2">
-            <h4> <i class="mi-done-all mr-1 mi-2x"></i>Makasih ya kamu udah absen hari ini <strong> jangan lupa makan ya :)</strong></h4>
         </div> -->
+        <div class="card bg-success py-2">
+            <h4> <i class="mi-done-all mr-1 mi-2x"></i>Makasih ya kamu udah absen hari ini <strong> jangan lupa makan ya :)</strong></h4>
+
+
+            <h5>Hari ini kamu masuk pukul <?= $data_absen['jam_masuk'] ?> WIB</h5>
+            <h5>Hari ini kamu masuk pukul <?= $data_absen['jam_pulang'] ?> WIB</h5>
+
+        </div>
         <a href="<?= base_url('home/absenyuk') ?>" class="btn btn-warning"><i class="mi-touch-app mi-2x mr-1 "></i>Absen Sekarang <strong> yuk!</strong></a>
-        <a href="<?= base_url('home/absenyuk') ?>" class="btn btn-success"><i class="mi-touch-app mi-2x mr-1 "></i>Weits sebelum udahan <strong>klik disini yah!</strong></a>
+        <!-- <a href="<?= base_url('home/absenyuk') ?>" class="btn btn-success"><i class="mi-touch-app mi-2x mr-1 "></i>Weits sebelum udahan <strong>klik disini yah!</strong></a> -->
 
         <hr>
 
