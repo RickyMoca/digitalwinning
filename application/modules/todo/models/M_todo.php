@@ -46,9 +46,6 @@ class M_todo extends CI_Model
     * ---------------------------------------------------------------------------- */
 
 
-
-
-
     /* ------------------------------------------------------------------------------
     *  # Model For My Issigned
     * ---------------------------------------------------------------------------- */
@@ -74,7 +71,8 @@ class M_todo extends CI_Model
     {
         // Select * from v-todos where status='1'
         $id = $this->session->userdata('id');
-        return $this->db->get_where('v-todos', array('user_agent' => $id, 'status' => '1'))->result();
+        $this->db->order_by('flag', 'DESC');
+        return $this->db->get_where('v-todos', array('user_agent' => $id, 'status' => '1'),)->result();
     }
 
     public function getIssignedNores()

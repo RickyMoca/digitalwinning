@@ -28,9 +28,9 @@ class M_auth extends CI_Model
                     info_message($mesaage);
                     // cek Hak akses lalu arahkan sesuai aksesnya
                     if ($cek['role_id'] == 1) {
-                        redirect('todo');
+                        redirect('home');
                     } else if ($cek['role_id'] == 2) {
-                        redirect('todo');
+                        redirect('home');
                     } else if ($cek['role_id'] == 3) {
 
                         redirect('todo');

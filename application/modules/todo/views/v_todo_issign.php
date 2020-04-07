@@ -1,9 +1,28 @@
+<div class="col-md-12  mx-auto mb-2">
+    <div class="float-right">
+        <!-- search -->
+        <div class="float-right">
+
+            <div class="input-group">
+
+                <span class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-search4"></i></span>
+                </span>
+                <input type="text" name="search" class="form-control" placeholder="Cari disni">
+            </div>
+        </div>
+        <!-- /search -->
+    </div>
+</div>
 <div class="col-md-12 mx-auto">
     <div class="card">
+
         <div class="card-header header-elements-inline bg-dark">
 
             <h3 class="card-title"><i class="icon-drawer-in icon-2x mr-2"></i>On Hold Parcel Ninja</h3>
-            <a href="#" data-toggle="modal" data-target="#m_addtodo" class="text-light"><i class="mi-queue mi-2x mr-1"></i></a>
+            <a href="#" data-toggle="modal" data-target="#m_addtodo" class="text-light"><i class="mi-add-box mi-2x"></i> Add New</a>
+
+
 
         </div>
         <div id="message"></div>
@@ -30,17 +49,14 @@
             </ul>
             <!--/Header Tabs -->
 
-
             <!-- tabs content -->
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab1_issign">No data</div>
                 <div class="tab-pane fade" id="tab2_issign">No data</div>
                 <div class="tab-pane fade" id="tab3_issign">No data</div>
                 <div class="tab-pane fade" id="tab4_issign">No data</div>
-
             </div>
             <!-- /tabs content -->
-
         </div>
     </div>
 </div>
